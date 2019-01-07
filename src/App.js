@@ -55,9 +55,9 @@ class App extends Component {
             <Button name='btnDel' onClick={()=>{ this.deleteClick(item.id) }} > Delete </Button>
             </div>)}
         </div>
-      
-
-
+        <h1>
+          Made some changes
+        </h1>    
       </div>
     );
   }
