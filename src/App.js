@@ -55,10 +55,7 @@ class App extends Component {
               {
                 this.state.inputArray.map(item => <DumbTodoItem key={item.id} id={item.id} name={item.taskTest} doDelete={()=>{ this.deleteClick(item.id) }} /> )
               }
-
           </div>
-
-
       </div>
     );
   }
