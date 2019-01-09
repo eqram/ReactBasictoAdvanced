@@ -5,9 +5,9 @@ import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 
 
-function DumbTodoItem(props) {
+
+const DumbTodoItem = (props) => {
     const { id, name, doDelete } = props;
-    
     return (
         <Paper style={{ width: '15%' }}>
             <span> {id} </span>
@@ -20,7 +20,7 @@ function DumbTodoItem(props) {
 DumbTodoItem.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
-    doDelete: PropTypes.func,
+    doDelete: PropTypes.func
 };
 
 export default DumbTodoItem;
