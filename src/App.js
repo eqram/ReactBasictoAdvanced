@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-
+import TodoItem from './todoItemCompo';
+import DumbTodoItem from './dumbTodoItemCompo';
 
 class App extends Component {
 
@@ -29,11 +29,8 @@ class App extends Component {
     var array = this.state.inputArray;
     let tempCount = this.state.count;
     var index = array.findIndex(x => x.id===e);
-
-    //console.log(index);
     array.splice(index,1);;
     this.setState({inputArray:array, count:tempCount});
-    //console.log(e);
   }
 
   handleChange = (e) => {
@@ -43,21 +40,22 @@ class App extends Component {
 
   render() {
     return (
-
       <div>
           <TextField name='taskTest' value={this.state.todoText} placeholder='enter task' onChange={this.handleChange} />
           <Button onClick={this.doClick} > ADD </Button>
           <div>
-          {this.state.inputArray.map(item => 
-          <div key={item.id}>
-            <TextField name='id' value={item.id}/>
-            <TextField name='taskTest' value={item.taskTest}/>
-            <Button name='btnDel' onClick={()=>{ this.deleteClick(item.id) }} > Delete </Button>
-            </div>)}
-        </div>
-        <h1>
-          Made some changes
-        </h1>    
+            {/*
+              this.state.inputArray.map(item => 
+                <div key={item.id}>
+                  <TextField name='id' value={item.id}/>
+                  <TextField name='taskTest' value={item.taskTest}/>
+                  <Button name='btnDel' onClick={()=>{ this.deleteClick(item.id) }} > Delete </Button>
+                </div>)
+              */}
+              {
+                this.state.inputArray.map(item => <DumbTodoItem key={item.id} id={item.id} name={item.taskTest} doDelete={()=>{ this.deleteClick(item.id) }} /> )
+              }
+          </div>
       </div>
     );
   }
