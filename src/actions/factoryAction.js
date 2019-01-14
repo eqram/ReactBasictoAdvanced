@@ -11,20 +11,20 @@ export function fetchFactories() {
     }
 }
 
-export function addFactory(factory){
-    return dispatch=> {
+export function addFactory(factory) {
+    return dispatch => {
         dispatch({
-            type:'ADD_FACTORY',
-            payload:apiClient.post(url, factory)
+            type: 'ADD_FACTORY',
+            payload: apiClient.post(url, factory)
         })
     }
 }
 
-export function updateFactory(factory){
-    return dispatch=> {
+export function updateFactory(factory) {
+    return dispatch => {
         dispatch({
-            type:'UPDATE_FACTORY',
-            payload:apiClient.put(url, factory)
+            type: 'UPDATE_FACTORY',
+            payload: apiClient.put('api/OrderFactorys/' + factory.orderFactoryId, factory)
         })
     }
 }

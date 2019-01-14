@@ -7,18 +7,55 @@ import AddFactory from './AddFactory';
 
 class Factories extends Component {
 
+    state = {
+        isEdit: false,
+        factory:{
+            orderFactoryId: 0,
+            orderFactoryName: "",
+            orderFactoryCode: "",
+            orderFactoryStratPoint: "",
+            countryid: ""
+        }
+    }
+
     componentDidMount = () => {
         this.props.fetchFactories();
+    }
+
+    /*
+
+    orderFactoryId: 1
+    orderFactoryName: "ECHOTEX"
+    orderFactoryCode: "ETEX"
+    orderFactoryStratPoint: "6972"
+    countryid: "3"
+
+    */
+
+    editFactory = (item) => {
+        let localFactory={
+            orderFactoryId: item.orderFactoryId,
+            orderFactoryName: item.orderFactoryName,
+            orderFactoryCode: item.orderFactoryCode,
+            orderFactoryStratPoint: item.orderFactoryStratPoint,
+            countryid: item.countryid
+        }
+        this.setState({
+            isEdit: true,
+            factory:localFactory
+        });
+
+        console.log(item);
     }
 
     render() {
         return (
             <div>
                 <h1>Factories</h1>
-                <AddFactory />
+                <AddFactory isEdit={this.state.isEdit} factory={this.state.factory} />
                 {this.props.factories.map(item =>
                     <div key={item.orderFactoryId}>
-                        <Factory factoryName={item.orderFactoryName} factoryCode={item.orderFactoryCode} /> <Icon name='edit' onClick= { ()=>{ alert('OK') } } />  <Icon name='delete'/>
+                        <Factory factoryName={item.orderFactoryName} factoryCode={item.orderFactoryCode} /> <Icon name='edit' link onClick={() => { this.editFactory(item) }} />  <Icon name='delete' link />
                     </div>
                 )
                 }
