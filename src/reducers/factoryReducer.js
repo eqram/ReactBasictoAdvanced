@@ -38,8 +38,9 @@ export default (state = defaultState, action = {}) => {
             {
                 let updatedItem = action.payload.data;
                 let currentFactories = state.factories;
-                currentFactories[state.factories.findIndex(x => x.orderFactoryId == updatedItem.orderFactoryId)].orderFactoryName = updatedItem.orderFactoryName;
-                currentFactories[state.factories.findIndex(x => x.orderFactoryId == updatedItem.orderFactoryId)].orderFactoryCode = updatedItem.orderFactoryCode;
+                let index = state.factories.findIndex(x => x.orderFactoryId == updatedItem.orderFactoryId);
+                currentFactories[index].orderFactoryName = updatedItem.orderFactoryName;
+                currentFactories[index].orderFactoryCode = updatedItem.orderFactoryCode;
                 return {
                     ...state,
                     loading: false,

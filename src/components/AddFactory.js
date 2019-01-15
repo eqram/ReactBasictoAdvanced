@@ -15,6 +15,15 @@ class AddFactory extends Component {
     }
 
     componentWillReceiveProps = (nextprops) => {
+
+        if (nextprops.isEdit === true && nextprops.loading === false) {
+            if (this.state.factoryName !== '') {
+                this.setState({
+                    factoryName: '', factoryCode: ''
+                })
+            }
+        }
+
         if (nextprops.isEdit) {
             this.setState({
                 factoryName: nextprops.factory.orderFactoryName,
@@ -63,7 +72,7 @@ class AddFactory extends Component {
                 countryid: '4'
             };
             self.props.addFactory(factory);
-        }        
+        }
     }
 
     render() {
