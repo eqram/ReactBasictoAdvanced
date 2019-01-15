@@ -6,6 +6,7 @@ import Contact from './Contact';
 import About from './About';
 import Factories from './components/FactoriesComponent';
 import BoxTypes from './components/setup/orderSetup/BoxTypesComponent'
+import StudentFormPage from './pages/studentPage';
 
 class App extends Component {
 
@@ -17,6 +18,7 @@ class App extends Component {
             <Link to='/About'>About</Link> | 
             <Link to='/Contact'>Contact</Link> |
             <Link to='/BoxType'>Box Type</Link>
+            <Link to='/std' > Students </Link>
           </div>
 
 
@@ -26,6 +28,7 @@ class App extends Component {
           <Route component={Contact} path='/Contact' />
           <Route component={About} path='/About' />
           <Route component={BoxTypes} path='/BoxType' />
+          <Route component={StudentFormPage} path='/std' />
         </Switch>
       </div>
     );
